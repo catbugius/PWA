@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+
+{% for item in items %}
+    {% if item.featured %}
+        <div class="featured-container">
+            <div class="featured-image">
+                <img src="{{ url_for('static', filename='uploads/' + item.image) }}" alt="{{ item.title }}">
+            </div>
+            <div class="featured-text">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
+                <div class="button">
+                    <a href="{{ url_for('tastenest.recipe_details', recipe_id=item.id) }}" class="recipe-link"><strong>MAKE IT!</strong></a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+
+{% endblock %}
+

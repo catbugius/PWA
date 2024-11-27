@@ -1,0 +1,1011 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&family=Poppins:wght@400;600&family=Nunito:wght@400;600&display=swap');
+
+/* General Styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    background-color: #fff2e9;
+}
+
+h2,h1 {
+    font-family: 'Merriweather', serif;
+    color: #1A1A1A;
+    margin-bottom: 0px;
+}
+
+/* ----------------------------FLASH MSGS---------------------------- */
+
+/* Alert message positioned at the top-right corner */
+.alert {
+    position: fixed;
+    top: 20px; /* Space from the top */
+    right: 20px; /* Space from the right edge */
+    background-color: #B0D6B5; /* Green background for success */
+    border: 1px solid #B0D6B5;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    padding: 15px;
+    color: #1A1A1A;
+    z-index: 1000; /* Ensure the alert appears above other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px; /* Adjust the width of the alert */
+    animation: slideIn 0.5s ease-out; /* Optional animation */
+}
+
+/* Button style */
+.btn-dismiss {
+    padding: 10px 20px;
+    background-color: #213323;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-dismiss:hover {
+    background-color: #3d5640;
+}
+
+/* Optional animation for the alert (slide in from the top-right corner) */
+@keyframes slideIn {
+    from {
+        top: -100px; /* Start above the screen */
+        opacity: 0;
+    }
+    to {
+        top: 20px;
+        opacity: 1;
+    }
+}
+
+/* ----------------------------NAVBAR---------------------------- */
+
+/* Heading 1 Styling for TasteNest */
+.logo {
+    background-color: #6D1B24; /* Darkest Red */
+    color: #fef8ef; /* Off-White */
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    margin: 0;
+    padding: 10px 15px;
+    text-align: left;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #902F3A; /* Dark Red */
+    padding: 10px,15px;
+    position: sticky; /* Sticky position */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensures the navbar stays above other content */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Aligns items to the left */
+    gap: 15px; /* Adds space between items */
+    flex-wrap: wrap; /* Allows wrapping if necessary */
+}
+
+.navbar li {
+    flex: 1 1 auto; /* Makes links shrink or grow as needed */
+    max-width: 150px; /* Optional: Restrict maximum width for each link */
+}
+
+.navbar a {
+    color: #fef8ef; /* Off-White */
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design for Smaller Devices */
+@media (min-width: 300px) and (max-width: 480px) {
+    .navbar ul {
+        gap: 1px; /* Reduce gap for smaller screens */
+        padding: 0px, 10px; /* Adjust padding */
+        margin: 0px,0px,0px,0px;
+    }
+
+    .navbar a {
+        padding: 6px 1px; /* Adjust padding for smaller devices */
+        font-size: 13px; /* Reduce font size for better fit */
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+/* ----------------------------RECIPES PAGE---------------------------- */
+
+.recipes-wrapper {
+    margin: 20px;
+}
+
+/* General styling for links */
+.recipe_card_link {
+    text-decoration: none; /* Remove underline from link */
+    width: 49%; /* Ensure the link takes up the full width of the card */
+    display: flex; /* Make the link behave like a flex container to wrap the card content */
+}
+
+/* Container for Recipe Cards */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Adds space between items */
+    justify-content: flex-start; /* Aligns cards to the left */
+    width: 100%; /* Full width of the page */
+    margin: 0px auto; /* Centers the container horizontally */
+    padding-top: 12px; /* Remove padding from container */
+}
+
+/* Recipe Card Styling */
+.recipe_card {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 10px 0; /* Margin between cards */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(50% - 15px); /* Ensures two cards fit in one row, minus gap */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    height: 200px;
+    position: relative;
+}
+
+/* Optional: To ensure the cards don't shrink too small */
+.recipe_card {
+    min-width: 200px; /* Ensures the card doesn't shrink smaller than 200px */
+}
+
+/* Hover effect for selected state */
+.recipe_card:hover {
+    opacity: 0.8;
+    transform: scale(1.02); /* Expands the card by 5% on hover */
+}
+
+/* Text content styling */
+.recipe_card .text-container {
+    padding: 15px;
+    flex: 1; /* Makes the text container take up the remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Placeholder or actual image container */
+.recipe_card .image-container {
+    width: 50%; /* Takes up 50% of the card's width */
+    height: 100%; /* Ensures the image container fills the card's height */
+    overflow: hidden;
+}
+
+.recipe_card .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    display: block; /* Removes any margin caused by images */
+}
+
+/* General styling for the favorite form */
+.favorite-form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove default button styles */
+.heart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style the heart icon */
+.heart-button i {
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #ccc; /* Default color for non-favourited */
+    transition: color 0.3s ease; /* Smooth color change */
+}
+
+/* Change color for favourited heart */
+.heart-button .fa-heart {
+    color: #ff4757; /* Bright red for favourited */
+}
+
+/* Add hover effect */
+.heart-button:hover i {
+    color: #ff6b81; /* Slightly lighter red for hover effect */
+}
+
+
+/* Responsive Design for Smaller Devices */
+@media (max-width: 768px) {
+    .recipe_card {
+        flex: 1 1 calc(50% - 15px); /* Two cards per row for medium devices */
+    }
+    .recipe_card_link {
+        text-decoration: none; /* Remove underline from link */
+        width: 100%; /* Ensure the link takes up the full width of the card */
+        display: flex; /* Make the link behave like a flex container to wrap the card content */
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe_card {
+        flex: 1 1 100%; /* Single card per row for smaller devices */
+    }
+
+    .recipe_card_link {
+        text-decoration: none; /* Remove underline from link */
+        width: 100%; /* Ensure the link takes up the full width of the card */
+        display: flex; /* Make the link behave like a flex container to wrap the card content */
+    }
+}
+
+/* Title Styling */
+.recipe_card h2 {
+    font-family: 'Merriweather', serif;
+    color: #1a1a1a;
+    margin: 0;
+    font-size: 20px;
+}
+
+/* Description Styling */
+.recipe_card p {
+    margin: 5px 0;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    color: #1a1a1a;
+    font-size: 16px;
+}
+
+/* Time Styling */
+.recipe_card p.time {
+    color: #902f3a;
+    margin-top: auto;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Styling the input checkbox */
+.recipe_card form {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 10px; /* Adjust distance from the top as needed */
+    right: 10px; /* Adjust distance from the right as needed */
+}
+
+.recipe_card input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* General form styling */
+.favorite-form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Hide the checkbox but keep it functional */
+.favorite-form input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Style the heart icon via the label */
+.heart-label {
+    display: inline-block;
+    font-size: 1.5em; /* Adjust size */
+    color: #ccc; /* Default grey */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth transition */
+    transform: translateY(-3px);
+}
+
+/* Change the color when the checkbox is checked */
+.favorite-form input[type="checkbox"]:checked + .heart-label {
+    color: #ff4757; /* Bright red for favourited */
+}
+
+/* Hover effect for better UI */
+.heart-label:hover {
+    color: #ff6b81; /* Slightly lighter red */
+}
+
+/* Optional: Use Font Awesome heart icon */
+.heart-label::before {
+    content: "\f004"; /* Unicode for Font Awesome heart */
+    font-family: "Font Awesome 5 Free"; /* Ensure Font Awesome is loaded */
+    font-weight: 900;
+}
+
+
+/* ----------------------------FEATURED PAGE---------------------------- */
+
+/* Container to hold image and text side by side */
+.featured-container {
+    display: flex;
+    margin: 0px 0;
+    background-color: #B0D6B5; /* Optional: change background color as needed */
+    overflow: hidden; /* Ensure content doesn't spill out */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add shadow */
+    height:500px;
+}
+
+/* Style for the image container */
+.featured-image {
+    width: 50%;
+    overflow: hidden;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image maintains aspect ratio and fills container */
+    display: block;
+}
+
+/* Style for the text container */
+.featured-text {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Optional: centers the text within the container */
+}
+
+.featured-text h2 {
+    font-size: 35px;
+    margin: 0px;
+    padding: 0px;
+
+}
+.featured-text p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Button Styling */
+.button a {
+    display: inline-block;
+    background-color: #902F3A; /* Button background color */
+    color: #fef8ef; /* Button font color */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px; /* Creates an oval shape */
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.button a:hover {
+    background-color: #b23a4f; /* Slightly lighter/darker variant for hover effect */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 780px) {
+
+    .featured-text {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .featured-text h2 {
+        font-size: 29px;
+    }
+
+    .featured-text p {
+        font-size: 18px;
+    }
+}
+
+
+/* Media query for smaller screens */
+@media (max-width: 480px) {
+    .featured-container {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; /* Center the content horizontally if needed */
+    }
+
+    .featured-image, .featured-text {
+        width: 100%; /* Make the containers take the full width */
+    }
+
+    .featured-text {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .featured-text h2 {
+        font-size: 25px;
+    }
+}
+
+
+/* ----------------------------FAVOURITES PAGE---------------------------- */
+
+/* Default layout */
+.layout-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+/* Layout 1: Vertical list */
+.layout-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Layout 2: Masonry-style layout */
+.layout-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* Layout 3: Centered grid with gaps */
+.layout-centered {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.no-favourites {
+    margin-top: 5px;
+    padding-top: 0px;
+}
+
+/* ----------------------------ADD AND EDIT POPUP---------------------------- */
+/* HOW THE DROPDOWN SHOWS AND ITS TRANSITIONS */
+
+/* Link Styling (Button appearance when not active) */
+.link {
+    display: inline-block;
+    background-color: #213323; /* Green background color */
+    color: #fef8ef; /* Cream text color */
+    font-weight: bold;
+    text-decoration: none;
+    border-color: none;
+    padding: 12px 24px; /* Same padding as button for consistent sizing */
+    border-radius: 30px; /* Oval shape like the button */
+    text-align: center;
+    transition: background-color 0.3s;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Link hover effect */
+.link:hover {
+    background-color: #a2cfa2; 
+}
+
+/* Active link styling */
+.dropdown.active > .link {
+    background-color: #a2cfa2;
+}
+
+/* Link within the dropdown menu (when active) */
+.dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: auto;
+}
+
+/* Link hover effect inside dropdown */
+.dropdown.active > .link:hover {
+    background-color: #a2cfa2; /* Hover effect when active */
+}
+
+
+.dropdown {
+    position: relative;
+    z-index: 999;
+    margin-top:10px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    width: 60%;
+    z-index: 900; 
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: auto;
+}
+
+/* JUST HOW THE FORUM LOOKS */
+/* Adjusting popup positioning to avoid overlapping with the navbar */
+
+/* Limit the size of the image inside the popup */
+.popup img {
+    max-width: 100%; /* Ensure the image fits within the popup width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent any unexpected inline behavior */
+    margin-top: 10px; /* Add some space above the image */
+}
+
+.add-edit {
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start; /* Align the popup to the top with some space */
+    height: auto; /* Ensure it doesn't cover the whole screen height */
+    padding-top: 20px; /* Add padding-top to push the popup below the navbar */
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.popup {
+    background-color: #ffffff; /* White background for the popup */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.add-edit h1 {
+    text-align: center;
+    color: #333; /* Dark grey for titles */
+}
+
+.popup label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #555; /* Mid-grey for labels */
+}
+
+.popup input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+.popup input[type="file"] {
+    border: none;
+    background-color: transparent;
+}
+
+button.submit-button {
+    background-color: #2b463b; /* Slightly lighter green for hover */
+    color: #fef8ef;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-family: 'Poppins', serif;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    transition: background-color 0.3s ease-in-out; /* Smooth transitions */
+}
+
+button.submit-button:hover {
+    background-color: #B0D6B5; /* Your green color */
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu {
+        width: 100%;
+    }  
+}
+
+/* ----------------------------GROCERY CONTAINER---------------------------- */
+/* Specific container for the grocery list page */
+.grocery-container {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left:20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of items to the next row */
+    justify-content: left; /* Center items horizontally */
+    gap: 20px; /* Space between the items */
+}
+
+/* Title of the page */
+.page-title {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+    width: 100%; /* Ensure the title spans the full width */
+}
+
+/* Card style for each grocery list */
+.grocery-list {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.33% - 20px); /* Ensure 3 items per row with space */
+    max-width: calc(33.33% - 20px); /* Limit the maximum width */
+    box-sizing: border-box; /* Include padding and border in size */
+}
+
+/* Title for each grocery list */
+.list-title {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+/* List style for ingredients */
+.ingredient-list {
+    padding: 0;
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ingredient-checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.ingredient-name {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Strikethrough effect when checkbox is checked */
+.ingredient-checkbox:checked + .ingredient-name {
+    text-decoration: line-through;
+    color: #aaa; /* Optional: Change text color when checked */
+}
+
+.delete-btn-container {
+    position: absolute; /* Position relative to the nearest positioned ancestor */
+    top: 40px;          /* Distance from the top */
+    right: 10px;        /* Distance from the right */
+    z-index: 999;      /* Ensure it stays on top of other elements */
+}
+
+.delete-btn-recipe-details {
+    background-color: #8B0000; /* Dark red background */
+    color: white; /* White text color */
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    padding: 12px 24px; /* Same padding as the other buttons for consistency */
+    cursor: pointer;
+    border-radius: 30px; /* Oval shape */
+    text-align: center; /* Center text alignment */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transitions */
+}
+
+.delete-btn a {
+    font-size: 13px;
+}
+
+.delete-btn-recipe-details:hover {
+    background-color: #FF6F61; /* Light red background for hover */
+    color: #fff; /* Keep text white on hover */
+}
+
+@media (max-width: 480px) {
+    .delete-btn-container {
+        top: 22px;          /* Distance from the top */
+        right: 0px;        /* Distance from the right */
+    }
+}
+
+@media (max-width: 780px) {
+    /* Card style for each grocery list */
+.grocery-list {
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1 1 calc(50% - 20px); /* Ensure 3 items per row with space */
+    max-width: calc(50% - 20px); /* Limit the maximum width */
+}
+}
+
+@media (max-width: 480px) {
+    /* Card style for each grocery list */
+.grocery-list {
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1 1 calc(100% - 20px); /* Ensure 3 items per row with space */
+    max-width: calc(100% - 20px); /* Limit the maximum width */
+}
+}
+
+
+/* ----------------------------RECIPE DETAIL PAGE---------------------------- */
+
+/* Recipe Details Page Styling */
+.recipe-detail {
+    position: relative;
+    font-family: 'Nunito', sans-serif;
+    padding: 20px;
+}
+
+.recipe-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.recipe-description {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.recipe-image {
+    display: block;
+    max-width: 100%;
+    margin: 20px 0;
+}
+
+/* Time Section Styling */
+.time {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.add-to-groceries-form {
+    margin-bottom: 0px;
+}
+
+.add-to-groceries-btn {
+    display: inline-block;
+    background-color: #213323; /* Green background color */
+    color: #fef8ef; /* Cream text color */
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none; /* Remove underline (optional) */
+    padding: 12px 24px; /* Match the .link button padding */
+    border: none; /* Remove border for cleaner look */
+    border-radius: 30px; /* Oval shape */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for add-to-groceries-btn */
+.add-to-groceries-btn:hover {
+    background-color: #a2cfa2; /* Slightly darker green for hover effect */
+    color: #fef8ef; /* Keep text color consistent */
+}
+
+
+/* Two Column Layout for Ingredients and Instructions */
+.ingredients-title, .instructions-title {
+    margin-top: 0px;
+    font-family: 'Merriweather', serif;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.recipe-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.recipe-image {
+    width: 100%; /* Adjust the width as needed */
+    height: 300px; /* Adjust the height as needed */
+    border-radius: 8px; /* Rounds the corners of the image */
+    object-fit: cover; /* Ensures the image covers the entire area without stretching */
+    display: block; /* Ensures the image is a block-level element */
+    margin-left: 0; /* Removes any margin around the image */
+    margin-right: 0;
+    float: left; /* Aligns the image to the left */
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+
+.ingredients-list {
+    margin-left: 5px;
+    font-size: 1em;
+}
+
+.ingredient-item {
+    margin-bottom: 5px;
+}
+
+.instructions-list {
+    list-style-type: decimal;
+    margin-left: 20px;
+    font-size: 1em;
+}
+
+.instruction-item {
+    margin-bottom: 10px;
+}
+
+.instructions-column {
+    margin-left: 20px;
+    padding: 20px;
+    border-left: 2px solid #1A1A1A; /* Adds a left border */
+}
+
+@media (max-width: 768px) {
+    .recipe-title {
+        font-size: 2em;
+    }
+
+    .recipe-description {
+        font-size: 1.2em;
+    }
+
+    .ingredients-title, .instructions-title {
+        font-size: 1.6em;
+    }
+
+    .recipe-detail-content {
+        grid-template-columns: 1fr; /* Stacks the columns on smaller screens */
+        gap: 20px;
+    }
+
+    .ingredients-list, .instructions-list {
+        font-size: 0.9em;
+    }
+
+    .ingredient-item, .instruction-item {
+        margin-bottom: 8px; /* Adds some space for better readability */
+    }
+
+    .add-to-groceries-btn {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+
+    .ingredients-list {
+        padding-bottom: 40px;
+        border-right: none;
+        border-bottom: 2px solid #1A1A1A;
+        margin-left: 0px;
+    }
+
+    .instructions-title {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    .instructions-column {
+        margin-left: 0px;
+        padding: 0px;
+        border-left: none; /* Adds a left border */
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-title {
+        font-size: 1.7em;
+    }
+
+    .recipe-description {
+        font-size: 1.1em;
+    }
+
+    .ingredients-title, .instructions-title {
+        font-size: 1.4em;
+    }
+
+    .recipe-detail {
+        padding: 10px; /* Less padding for smaller screens */
+    }
+
+    .add-to-groceries-btn {
+        font-size: 0.8em;
+        padding: 7px 12px;
+    }
+}
+
+/* ----------------------------DELETE PAGE---------------------------- */
+
+/* Container for the delete page */
+.delete-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title styling */
+.delete-title {
+    font-size: 32px;
+    color: #8B0000; /* Dark red */
+    margin-bottom: 20px;
+}
+
+/* Confirmation message styling */
+.delete-message {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: #8B0000; /* Dark red */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px; /* Oval shape */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    margin-right: 10px; /* Space between buttons/links */
+}
+
+.delete-btn:hover {
+    background-color: #FF6F61; /* Light red */
+    color: #fff;
+}
+
+/* Back to recipes link */
+.back-link {
+    display: inline-block;
+    font-size: 16px;
+    color: #213323; /* Dark green */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+.back-link:hover {
+    color: #a2cfa2; /* Light green */
+}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Delete Item{% endblock %}
+
+{% block content %}
+<div class="delete-container">
+    <h1 class="delete-title">Delete Grocery List</h1>
+    <p class="delete-message">
+        Are you sure you want to delete the list for <strong>{{ grocery.title }}</strong>?
+    </p>
+    <form action="{{ url_for('tastenest.delete_grocery_list', grocery_id=grocery_id) }}" method="POST">
+        <button type="submit" class="delete-btn">Yes, Delete</button>
+    </form>
+    <a href="{{ url_for('tastenest.groceries') }}" class="back-link">Back to Groceries</a>
+</div>
+{% endblock %}

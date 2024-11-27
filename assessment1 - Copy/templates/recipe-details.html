@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}Recipe Details{% endblock %}
+
+{% block content %}
+<div class="recipe-detail">
+    <div class ="dropdown" data-dropdown>
+        <button class="link" data-dropdown-button>Edit Recipe</button>
+        <div class="dropdown-menu"> 
+            <div class="add-edit">
+                <div class="popup">
+                    <h1> Edit Recipe </h1>
+                    <form method="POST" enctype="multipart/form-data">
+                        <label for="title">Recipe Title:</label>
+                        <input type="text" id="title" name="title" value="{{ recipe.title }}" required><br>
+            
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required>{{ recipe.description }}</textarea><br>
+            
+                        <label for="ingredients">Ingredients (comma-separated):</label>
+                        <input type="text" id="ingredients" name="ingredients" value="{{ recipe.ingredients | join(', ') }}" required placeholder="e.g., spaghetti, cheddar, eggs"><br>
+            
+                        <label for="instructions">Instructions:</label>
+                        <textarea id="instructions" name="instructions" required>{{ recipe.instructions }}</textarea><br>
+            
+                        <label for="image">Image:</label>
+                        <input type="file" id="image" name="image" accept="image/*"><br>
+                        {% if recipe.image %}
+                        <small>Current Image: <img src="{{ url_for('static', filename='uploads/' + recipe.image) }}" alt="{{ recipe.title }}"></small><br>
+                        {% endif %}
+            
+                        <label for="hrs">Time to Cook:</label>
+                        <input type="number" id="hrs" name="hrs" value="{{ recipe.time.hrs }}" min="0" placeholder="hours" required>hours<br>
+                        <input type="number" id="minutes" name="minutes" value="{{ recipe.time.minutes }}" min="0" placeholder="minutes" required>minutes<br>
+            
+                        <button type="submit" class="submit-button">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if not recipe.featured %}
+    <div class="delete-btn-container">
+        <a href="{{ url_for('tastenest.delete_recipe', recipe_id=recipe.id) }}" class="delete-btn-recipe-details">Delete Recipe</a>
+    </div>
+    
+    {% endif %}
+
+    <h1 class="recipe-title">{{ recipe.title }}</h1>
+    <p class="recipe-description">{{ recipe.description }}</p>
+    <p class="time"><strong>Time:</strong>
+        {% if recipe.time.hrs > 0 and recipe.time.minutes > 0 %}
+            {{ recipe.time.hrs }} hrs {{ recipe.time.minutes }} mins
+        {% elif recipe.time.hrs > 0 %}
+            {{ recipe.time.hrs }} hrs
+        {% elif recipe.time.minutes > 0 %}
+            {{ recipe.time.minutes }} mins
+        {% else %}
+            Time not specified
+        {% endif %}
+    </p>
+    <img src="{{ url_for('static', filename='uploads/' + recipe.image) }}" alt="{{ recipe.title }}" class="recipe-image">
+
+    <form action="{{ url_for('tastenest.add_to_groceries', recipe_id=recipe.id) }}" method="POST" class="add-to-groceries-form">
+        <button type="submit" name="add_to_groceries" value="1" class="add-to-groceries-btn">Add to Groceries?</button>
+    </form>
+    <div class="recipe-detail-content">
+        <!-- Ingredients Column -->
+        <div class="ingredients-column">
+            <h2 class="ingredients-title">Ingredients</h2>
+            <ul class="ingredients-list">
+                {% for ingredient in recipe.ingredients %}
+                    <li class="ingredient-item">{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Instructions Column -->
+        <div class="instructions-column">
+            <h2 class="instructions-title">Instructions</h2>
+            <ul class="instructions-list">
+                {% for step in recipe.instructions.split('\n') %}
+                    <li class="instruction-item">{{ step }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

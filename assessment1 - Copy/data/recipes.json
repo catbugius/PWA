@@ -1,0 +1,199 @@
+[
+    {
+        "id": 1,
+        "title": "Spaghetti Bolognese",
+        "ingredients": [
+            "spaghetti",
+            "ground beef",
+            "onion",
+            "garlic",
+            "tomato sauce",
+            "parmesan cheese"
+        ],
+        "instructions": "Cook spaghetti according to package instructions.\r\nSaute onion and garlic, then add ground beef and cook until browned.\r\nStir in tomato sauce and simmer for 20 minutes.\r\nServe over spaghetti and top with parmesan cheese.",
+        "description": "A classic Italian pasta dish with rich, savory flavors.",
+        "image": "Umamiology-Spaghetti-Bolognese-BeautyShot3-1480x1973.jpg",
+        "time": {
+            "hrs": 30,
+            "minutes": 0
+        },
+        "featured": true,
+        "favourited": true,
+        "rating": 5
+    },
+    {
+        "id": 3,
+        "title": "Vegetable Stir-fry",
+        "ingredients": [
+            "broccoli",
+            "carrot",
+            "bell pepper",
+            "soy sauce",
+            "garlic",
+            "rice"
+        ],
+        "instructions": "Heat oil in a wok.\r\nAdd garlic and stir-fry vegetables until tender.\r\nPour soy sauce over vegetables and mix well.\r\nServe over rice.",
+        "description": "A quick and healthy vegetable dish.",
+        "image": "vegetable_stir_fry.jpg",
+        "time": {
+            "hrs": 0,
+            "minutes": 25
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.2
+    },
+    {
+        "id": 4,
+        "title": "Pancakes",
+        "ingredients": [
+            "flour",
+            "milk",
+            "egg",
+            "baking powder",
+            "sugar",
+            "butter"
+        ],
+        "instructions": "Mix flour, baking powder, and sugar in a bowl.\r\nWhisk in milk and egg until smooth.\r\nHeat a pan and melt butter.\r\nPour batter into the pan and cook until bubbles form.\r\nFlip and cook until golden brown.",
+        "description": "Fluffy homemade pancakes.",
+        "image": "pancakesAI.jpg",
+        "time": {
+            "hrs": 0,
+            "minutes": 30
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.8
+    },
+    {
+        "id": 5,
+        "title": "Caesar Salad",
+        "ingredients": [
+            "romaine lettuce",
+            "croutons",
+            "parmesan cheese",
+            "Caesar dressing",
+            "chicken (optional)"
+        ],
+        "instructions": "Chop romaine lettuce.\r\nAdd croutons and parmesan cheese.\r\nToss with Caesar dressing.\r\nTop with grilled chicken if desired.",
+        "description": "A classic Caesar salad with optional chicken.",
+        "image": "caeser_salad.jpg",
+        "time": {
+            "hrs": 0,
+            "minutes": 15
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.0
+    },
+    {
+        "id": 6,
+        "title": "Beef Tacos",
+        "ingredients": [
+            "ground beef",
+            "taco seasoning",
+            "taco shells",
+            "lettuce",
+            "tomato",
+            "cheese",
+            "sour cream"
+        ],
+        "instructions": "Cook ground beef with taco seasoning.\r\nFill taco shells with beef, lettuce, tomato, and cheese.\r\nTop with sour cream and serve.",
+        "description": "Quick and delicious beef tacos.",
+        "image": "shredded-beef-tacos.jpg",
+        "time": {
+            "hrs": 0,
+            "minutes": 20
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.5
+    },
+    {
+        "id": 7,
+        "title": "Banana Bread",
+        "ingredients": [
+            "ripe bananas",
+            "flour",
+            "sugar",
+            "butter",
+            "egg",
+            "baking soda"
+        ],
+        "instructions": "Preheat oven to 175\u00c2\u00b0C (350\u00c2\u00b0F).\r\nMash bananas in a bowl.\r\nMix in melted butter, sugar, and egg.\r\nStir in flour and baking soda.\r\nPour batter into a loaf pan and bake for 60 minutes.",
+        "description": "Moist and sweet banana bread.",
+        "image": "banana_bread.jpg",
+        "time": {
+            "hrs": 1,
+            "minutes": 15
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.7
+    },
+    {
+        "id": 8,
+        "title": "Minestrone Soup",
+        "ingredients": [
+            "onion",
+            "carrot",
+            "celery",
+            "tomatoes",
+            "pasta",
+            "vegetable broth",
+            "beans"
+        ],
+        "instructions": "Saute onion, carrot, and celery in a pot.\r\nAdd tomatoes, broth, and beans.\r\nBring to a boil, then add pasta and cook until tender.",
+        "description": "A hearty Italian soup.",
+        "image": "minestrone.jpg",
+        "time": {
+            "hrs": 1,
+            "minutes": 0
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.3
+    },
+    {
+        "id": 9,
+        "title": "Grilled Cheese Sandwich",
+        "ingredients": [
+            "bread",
+            "cheddar cheese",
+            "butter"
+        ],
+        "instructions": "Butter one side of each bread slice.\r\nPlace cheese between slices, buttered sides out.\r\nCook in a skillet until golden brown on both sides.",
+        "description": "A simple yet delicious grilled cheese.",
+        "image": "Grilled-Cheese-6-1365x2048.jpg",
+        "time": {
+            "hrs": 0,
+            "minutes": 10
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.9
+    },
+    {
+        "id": 10,
+        "title": "Chocolate Chip Cookies",
+        "ingredients": [
+            "flour",
+            "butter",
+            "sugar",
+            "brown sugar",
+            "egg",
+            "vanilla extract",
+            "chocolate chips"
+        ],
+        "instructions": "Preheat oven to 175\u00c2\u00b0C (350\u00c2\u00b0F).\r\nCream butter and sugars.\r\nAdd egg and vanilla extract.\r\nMix in flour and fold in chocolate chips.\r\nDrop spoonfuls onto a baking sheet and bake for 10 minutes.",
+        "description": "Classic homemade cookies.",
+        "image": "chocolate_chip_cookies.jpg",
+        "time": {
+            "hrs": 0,
+            "minutes": 25
+        },
+        "featured": false,
+        "favourited": false,
+        "rating": 4.8
+    }
+]

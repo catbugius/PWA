@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Delete Item{% endblock %}
+
+{% block content %}
+<div class="delete-container">
+    <h1 class="delete-title">Delete Recipe</h1>
+    <p class="delete-message">
+        Are you sure you want to delete <strong>{{ recipe.title }}</strong>?
+    </p>
+    <form action="{{ url_for('tastenest.delete_recipe', recipe_id=recipe.id) }}" method="POST">
+        <button type="submit" class="delete-btn">Yes, Delete</button>
+    </form>
+    <a href="{{ url_for('tastenest.recipe_details', recipe_id=recipe.id) }}" class="back-link">Back to Viewing Recipe</a>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Groceries{% endblock %}
+
+{% block content %}
+<div class="recipes-wrapper">
+    <h1>Groceries</h1>
+        {% if items %}
+        <div class="grocery-container">
+            {% for item in items %}
+            <div class="grocery-list card">
+                <h2 class="list-title">{{ item.title }}</h2>
+                <ul class="ingredient-list">
+                    {% for ingredient in item.ingredients %}
+                    <li class="ingredient-item">
+                        <form action="{{ url_for('tastenest.toggle_ingredient', grocery_id=item.id, ingredient_name=ingredient.name) }}" method="POST">
+                            <input type="checkbox" name="checked" 
+                                   {% if ingredient.checked %} checked {% endif %}
+                                   onclick="this.form.submit()" class="ingredient-checkbox">
+                            <span class="ingredient-name">{{ ingredient.name }}</span>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Delete button for this grocery list -->
+                <form action="{{ url_for('tastenest.delete_grocery_list', grocery_id=item.id) }}">
+                    <button type="submit" class="btn btn-danger delete-btn">Delete List</button>
+                </form>
+            </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-items-message">No grocery lists available. Add a new one to get started!</p>
+        {% endif %}
+</div>
+{% endblock %}

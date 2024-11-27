@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% block title %}Favourites{% endblock %} 
+
+{% block content %} 
+<div class="recipes-wrapper">
+    <h1>Favourites</h1>
+
+        <div class="container">
+            {% for item in items %}
+                {% if item.favourited %}
+                <!-- The entire recipe card is a link now -->
+                <a href="{{ url_for('tastenest.recipe_details', recipe_id=item.id) }}" class="recipe_card_link">
+                    <div class="recipe_card">
+                        <div class="image-container">
+                            {% if item.image %}
+                            <img src="{{ url_for('static', filename='uploads/' + item.image) }}" alt="{{ item.title }}">
+                            {% else %}
+                            <p>Image here</p>
+                            {% endif %}
+                        </div>
+                        <div class="text-container">
+                            <h2>{{ item.title }}</h2>
+                            <p>{{ item.description }}</p>
+                            <p class="time">
+                                {% if item.time.hrs > 0 and item.time.minutes > 0 %}
+                                    {{ item.time.hrs }} hrs {{ item.time.minutes }} mins
+                                {% elif item.time.hrs > 0 %}
+                                    {{ item.time.hrs }} hrs
+                                {% elif item.time.minutes > 0 %}
+                                    {{ item.time.minutes }} mins
+                                {% else %}
+                                    Time not specified
+                                {% endif %}
+                            </p>
+
+                            <!-- Form for favoriting the recipe, placed outside the link -->
+                            <form action="{{ url_for('tastenest.toggle_favourite', recipe_id=item.id) }}" method="POST" class="favorite-form">
+                                <input type="checkbox" id="favourited-{{ item.id }}" name="favourited" onchange="this.form.submit()" {% if item.favourited %}checked{% endif %}>
+                                <label for="favourited-{{ item.id }}" class="heart-label"></label>
+                            </form>   
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    <!-- Show a message if there are no favorited items -->
+    {% if not items|selectattr("favourited")|list %}
+    <p class="no-favourites">No favorite recipes yet! Go back and add some.</p>
+    {% endif %}
+</div>
+
+{% endblock %} 

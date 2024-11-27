@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Value{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='index.js') }}" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1 class="logo">tastenest</h1>
+    <nav class="navbar">
+      <ul class="nav-links">
+          <li><a href="{{ url_for('tastenest.home') }}"><i class="fas fa-home"></i> <strong>HOME</strong></a></li>
+          <li><a href="{{ url_for('tastenest.recipes') }}"><i class="fas fa-utensil-spoon"></i> <strong>RECIPES</strong></a></li>
+          <li><a href="{{ url_for('tastenest.favourites') }}"><i class="fas fa-heart"></i> <strong>FAVOURITES</strong></a></li>
+          <li><a href="{{ url_for('tastenest.groceries') }}"><i class="fas fa-shopping-cart"></i> <strong>GROCERIES</strong></a></li>
+      </ul>
+  </nav>
+  
+
+    <main role="main">
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-success" role="alert">
+              {% for message in messages %}
+                <p>{{ message }}</p>
+              {% endfor %}
+              <!-- Button to dismiss flash message -->
+              <form method="POST" action="{{ url_for('tastenest.dismiss_flash') }}">
+                <input type="hidden" name="referrer" value="{{ request.url }}">
+                <button type="submit" class="btn-dismiss">OK</button>
+            </form>            
+            </div>
+          {% endif %}
+        {% endwith %}
+      
+        <!-- Main content -->
+        {% block content %}{% endblock %}
+      </main>
+
+</body>
+</html>
